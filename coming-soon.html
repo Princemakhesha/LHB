@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Halaal Board | Coming Soon</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>  
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('back2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .input-field-container {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .input-field-container input[type=email] {
+            border: none;
+            background: transparent;
+            color: white;
+            padding: 0 10px;
+            flex: 1;
+        }
+        .input-field-container input[type=email]:focus, .input-field-container input[type=email]:valid {
+            border-bottom: none;
+            box-shadow: none;
+        }
+        .input-field-container .material-icons {
+            margin-right: 10px;
+        }
+        .input-field-container .btn {
+            background-color: orange;
+            margin-left: 10px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .input-field-container .btn:hover {
+            background-color: #47f900;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="img/favicon.png" alt="Logo" class="logo">
+        <h1>Coming Soon</h1>
+        <p>We are working hard to bring you the best LHB website. Stay tuned!</p>
+        <div class="row">
+            <form id="emailForm" action="#" method="post" class="col s12 notify-form">
+                <div class="row">
+                    <div class="input-field-container col s12">
+                        <i class="material-icons prefix">email</i>
+                        <input type="email" id="email" name="email" class="validate" required>
+                        <button id="btn" type="submit" class="btn waves-effect waves-light">Notify Me</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <footer>
+        &copy; 2024 Local Halaal Board. Designed by <a href="https://www.semtexagency.co.za" style="color: #ff6f61;">Semtex Agency</a>
+    </footer>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
