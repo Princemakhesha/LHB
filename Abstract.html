@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abstract - Local Halaal Board</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+  <style>
+    #contactModal textarea {
+      width: 100%;
+      padding: 10px;
+      color: #fff;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+      /* Ensure padding doesn't affect width */
+      height: auto;
+      /* Allow the height to adjust automatically based on content */
+    }
+
+    /* Style the form container */
+    #contactModal {
+      /* padding: 20px;
+      border-radius: 10px; */
+
+
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Style input fields */
+    #contactModal input[type="text"],
+    #contactModal input[type="email"],
+    #contactModal textarea,
+    #contactModal button {
+      width: 100%;
+      color: #fff;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid lightgreen;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    /* Additional styles for the button */
+    #contactModal button {
+      background-color: transparent;
+      color: #fff;
+      border: 3px solid darkgreen;
+      /* Thicker dark green outline */
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      /* Ensure the text is centered */
+    }
+
+    #contactModal button:hover {
+      background-color: darkgreen !important;
+      /* Dark green color */
+      color: #fff !important;
+      /* White text */
+    }
+  </style>
+
+  <style>
+    .page-footer {
+      /* background: url('back2.jpg') no-repeat center center; Replace with your image path */
+      background-color: #424242;
+      background-size: cover;
+      /* Ensure the image covers the entire footer */
+      color: white;
+      /* Ensure the text is readable against the background */
+      padding: 20px 0;
+      /* Adjust padding as needed */
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .slim-nav {
+      height: 18px;
+      /* Adjust this value to make the nav bar slimmer or thicker */
+      line-height: 18px;
+      /* Ensures the content inside the nav bar is vertically centered */
+    }
+
+    .h1-nav {
+      height: 100px;
+      /* Adjust this value to make the nav bar slimmer or thicker */
+      line-height: 100px;
+      /* Ensures the content inside the nav bar is vertically centered */
+    }
+
+    .get-certified-btn {
+      margin-top: 20px;
+      /* Adjust spacing between text and button */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid darkgreen;
+      /* Thicker dark green outline */
+      background-color: transparent;
+      /* Transparent background */
+      color: darkgreen;
+      /* Dark green text color */
+      font-size: 0.9rem;
+      /* Adjust the font size as needed */
+      padding: 10px 20px;
+      /* Adjust padding as needed */
+      border-radius: 12px;
+      /* Rounded corners */
+      text-align: center;
+      /* Center text */
+      transition: background-color 0.3s, color 0.3s;
+      /* Smooth transition for hover effects */
+    }
+
+    .get-certified-btn:hover {
+      background-color: darkgreen !important;
+      /* Dark green color */
+      color: #fff !important;
+      /* White text */
+    }
+
+    /* Other CSS styles here */
+
+    .active-page {
+      position: relative;
+    }
+
+    .active-page::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #004d40;
+      /* Dark green color for the line */
+      bottom: -5px;
+      /* Adjust this value to move the line closer or further from the text */
+      left: 0;
+    }
+
+    .head {
+      background-color: #1b5e20;
+    }
+
+    .brand-colour {
+      /* background-color: darkgreen; */
+      color: darkgreen;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    .search-bar {
+      display: none;
+      border: 3px solid darkgreen;
+      /* Thicker dark green outline */
+      padding: 10px 20px;
+      /* Adjust padding as needed */
+      border-radius: 12px;
+      /* Rounded corners */
+      position: absolute;
+      top: 60px;
+      /* Adjust this value based on your navbar height */
+      right: 10px;
+      width: 380px;
+      /* Adjust the width as needed */
+      background-color: white;
+      z-index: 1000;
+      /* border: 1px solid #ccc; */
+      /* padding: 5px; */
+      /* border-radius: 4px; */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-wrapper {
+      position: relative;
+    }
+
+    .search-results {
+      display: none;
+      color: darkgreen;
+      border: 3px solid darkgreen;
+      /* Thicker dark green outline */
+      padding: 10px 20px;
+      /* Adjust padding as needed */
+      border-radius: 12px;
+      /* Rounded corners */
+      border: 4px solid darkgreen;
+      /* Thicker dark green outline */
+      position: absolute;
+      top: 123px;
+      /* Adjust this value based on your navbar height */
+      right: 10px;
+      width: 380px;
+      /* Adjust the width as needed */
+      background-color: white;
+      z-index: 1000;
+      border: 1px solid #ccc;
+      /* padding: 5px; */
+      /* border-radius: 4px; */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .search-results a {
+      color: darkgreen;
+      /* Set the text color to dark green */
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+    }
+
+    .search-results a:hover {
+      background-color: #f0f0f0;
+      /* Light grey background on hover */
+    }
+
+    .sidenav-search-bar {
+      display: none;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 4px;
+      margin: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidenav-search-results {
+      display: none;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 4px;
+      max-height: 300px;
+      overflow-y: auto;
+      margin: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidenav-search-results a {
+      color: darkgreen;
+      /* Set the text color to dark green */
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+    }
+
+    .sidenav-search-results a:hover {
+      background-color: #f0f0f0;
+      /* Light grey background on hover */
+    }
+
+    /* Default styles for nav links */
+    .navbar-custom ul li a.nav-link {
+      color: darkgreen;
+      /* Set default text color to dark green */
+      text-decoration: none;
+      /* Remove underline */
+      transition: background-color 0.3s, color 0.3s;
+      padding: 0 10px;
+      /* Adjust padding to match "Get Certified" button */
+      border-radius: 12px;
+      /* Match the rounded corners of "Get Certified" button */
+      line-height: 2.2rem;
+      /* Match line height to maintain height consistency */
+      display: inline-block;
+    }
+
+    /* Default styles for navbar links */
+    .navbar ul li a.nav-link {
+      color: darkgreen;
+      /* Set default text color to dark green */
+      text-decoration: none;
+      /* Remove underline */
+      transition: background-color 0.3s, color 0.3s;
+      padding: 0 10px;
+      /* Adjust padding to match "Get Certified" button */
+      border-radius: 12px;
+      /* Match the rounded corners of "Get Certified" button */
+      line-height: 2.2rem;
+      /* Match line height to maintain height consistency */
+      display: inline-block;
+    }
+
+    /* Default styles for nav links */
+    .navbar ul li a.nav-link {
+      color: darkgreen;
+      /* Set default text color to dark green */
+      text-decoration: none;
+      /* Remove underline */
+      transition: background-color 0.3s, color 0.3s;
+      padding: 0 10px;
+      /* Adjust padding to match "Get Certified" button */
+      border-radius: 12px;
+      /* Match the rounded corners of "Get Certified" button */
+      line-height: 2.2rem;
+      /* Match line height to maintain height consistency */
+      display: inline-block;
+    }
+
+    /* Hover styles for nav links */
+    .navbar ul li a.nav-link:hover {
+      background-color: darkgreen;
+      color: #fff;
+    }
+
+    /* Ensure the nav bar maintains its layout */
+    .navbar ul {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Default style for current page (Home) button */
+    .current-page {
+      background-color: darkgreen;
+      color: #fff;
+      border-radius: 12px;
+      padding: 0 10px;
+    }
+
+/* Style for breadcrumb navigation */
+.breadcrumb {
+  color: white; /* Change text color */
+  text-decoration: none; /* Remove underline */
+  font-size: 0.9rem; /* Adjust font size */
+}
+
+.breadcrumb:hover {
+  color: white; /* Change text color on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Style for breadcrumb navigation container */
+.breadcrumbs {
+  background-color: darkgreen; /* Light background for the breadcrumb area */
+  padding: 10px 0; /* Add some padding */
+  /* border-bottom: 1px solid #ddd; Add a border for separation */
+}
+
+.breadcrumb-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Hide breadcrumbs on large screens */
+@media only screen and (min-width: 993px) {
+  .breadcrumbs {
+    display: none;
+  }
+}
+
+
+  </style>
+
+</head>
+
+<body id="getcertified">
+  <div class="fixed-action-btn">
+    <a href="https://wa.me/+27724468260"><img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/598px-WhatsApp_icon.png"
+        alt="WhatsApp Button" width="70"></a>
+  </div>
+  <section>
+    <nav class="slim-nav #1b5e20 green darken-4  center" role="navigation">
+      <!-- Your navigation content here -->
+    </nav>
+  </section>
+
+  <nav class="white col s18 l1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo"><img src="img/favicon.png" width="60"></a>
+      <div class="navbar">
+        <ul class="right hide-on-med-and-down">
+          <li><a href="index.html" class="nav-link"><strong>Home</strong></a></li>
+          <li><a href="about.html" class="nav-link"><strong>About Us</strong></a></li>
+          <li><a href="Abstract.html" class="nav-link current-page white-text"><strong>Abstract</strong></a></li>
+          <li><a href="#contact-footer" class="nav-link"><strong>Contact</strong></a></li>
+          <!-- <li><a href="ppe.html" class="brand-colour"><strong>Clothes</strong></a></li> -->
+          <li><a href="FAQS.html" class="nav-link"><strong>FAQs</strong></a></li>
+          <li><a href="getcertified.html" class="waves-effect waves-light btn-small get-certified-btn"><strong>GET
+                CERTIFIED</strong></a></li>
+          <li> <a href="#" id="search-icon" class="search-trigger"><i
+                class="material-icons brand-colour right">search</i></a>
+            <form id="search-form" class="search-bar right">
+              <input type="search" id="search-input" placeholder="Search...">
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div id="search-results" class="search-results"></div>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html" class="black-text">HOME</a></li>
+        <li><a href="about.html" class="black-text">ABOUT US</a></li>
+        <li><a href="getcertified.html" class="black-text">GET CERTIFIED</a></li>
+        <li><a href="Abstract.html" class="white-text darken-4 green">ABSTRACT</a></li>
+        <li><a href="contact.html" class="black-text">CONTACT</a></li>
+        <!-- <li><a href="ppe.html" class="black-text">PROTECTIVE CLOTHES</a></li> -->
+        <li><a href="FAQS.html" class="black-text">FAQS</a></li>
+        <li>
+          <a href="#" id="sidenav-search-icon" class="darkgreen get-certified-btn"><i
+              class="material-icons darkgreen">search</i>Click here to search</a>
+          <form id="sidenav-search-form" class="sidenav-search-bar">
+            <input type="search" id="sidenav-search-input" placeholder="Search...">
+          </form>
+          <div id="sidenav-search-results" class="sidenav-search-results"></div>
+        </li>
+      </ul>
+
+      <ul>
+        <li><a href="#" data-target="nav-mobile" class="sidenav-trigger"><i
+              class="material-icons brand-colour">menu</i></a></li>
+      </ul>
+      <li><a href="#" id="sidenav-search-icon" data-target="nav-mobile" class="sidenav-trigger right"><i
+            class="material-icons brand-colour right">search</i></a></li>
+    </div>
+  </nav>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize sidenav
+      const elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems);
+
+      // Toggle search bar
+      const searchIcon = document.getElementById('search-icon');
+      const searchForm = document.getElementById('search-form');
+      const searchResults = document.getElementById('search-results');
+      const searchInput = document.getElementById('search-input');
+      const sidenavSearchIcon = document.getElementById('sidenav-search-icon');
+      const sidenavSearchForm = document.getElementById('sidenav-search-form');
+      const sidenavSearchResults = document.getElementById('sidenav-search-results');
+      const sidenavSearchInput = document.getElementById('sidenav-search-input');
+
+      searchIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (searchForm.style.display === 'none' || searchForm.style.display === '') {
+          searchForm.style.display = 'block';
+        } else {
+          searchForm.style.display = 'none';
+          searchResults.style.display = 'none';
+        }
+      });
+
+      sidenavSearchIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (sidenavSearchForm.style.display === 'none' || sidenavSearchForm.style.display === '') {
+          sidenavSearchForm.style.display = 'block';
+        } else {
+          sidenavSearchForm.style.display = 'none';
+          sidenavSearchResults.style.display = 'none';
+        }
+      });
+
+      // Sample data to search
+      const data = [
+        { title: 'Home Page', link: 'index.html' },
+        { title: 'About Us', link: 'about.html' },
+        { title: 'Abstract', link: 'abstract.html' },
+        { title: 'Contact', link: '#contact-footer' },
+        // { title: 'Protective Clothes', link: 'ppe.html' },
+        { title: 'FAQs', link: 'FAQS.html' },
+        { title: 'Get Certified', link: 'getcertified.html' },
+        { title: 'Office of the imaam', link: 'about.html' },
+        { title: 'Scheme types', link: 'about.html#scheme' },
+        { title: 'admissibility to Halaalan Twayyiban Standards', link: 'about.html#scheme' },
+        { title: '17 years of founding the LHB', link: 'about.html' },
+        { title: 'Eating Business Scheme', link: 'about.html#scheme' },
+        { title: 'Endorsement (EN) Scheme', link: 'about.html#scheme' },
+        { title: 'Poultry Abattoir (PA) Scheme', link: 'about.html#scheme' },
+        { title: 'Product (PRO) or Whole Plant (WP) Scheme', link: 'about.html#scheme' },
+        { title: 'Storage Facility (SF) Scheme', link: 'about.html#scheme' },
+        { title: 'Benefits of Halaal Compliancy', link: 'getcertified.html#benefits' },
+        { title: 'LHB Halaal Certification', link: 'getcertified.html' },
+        { title: 'Halaalan Twayyiban Quality Management System (HALMQ)', link: 'getcertified.html' },
+        { title: 'Application and Certification Fees', link: 'getcertified.html' },
+        { title: 'Halaalan Twayyiban Comptency', link: 'getcertified.html' },
+        { title: 'Halaalan Twayyiban Comptency Assessment (HCA)', link: 'getcertified.html' },
+        { title: 'Mandatory Refresher Requirement', link: 'getcertified.html' },
+        { title: 'Downloadable Resources', link: 'getcertified.html' },
+        { title: 'Self-Study Resources', link: 'getcertified.html' },
+        { title: 'contact', link: 'contact.html' },
+        { title: 'NEW applications', link: 'getcertified.html#application' },
+        { title: 'AMEND applications', link: 'getcertified.html#application' },
+        { title: 'RENEWAL applications', link: 'getcertified.html#application' },
+        { title: 'Application Fees', link: 'getcertified.html#application' },
+        { title: 'COSTS', link: 'getcertified.html' },
+        { title: 'Module', link: 'getcertified.html' },
+        { title: 'APPLY', link: 'getcertified.html#application' },
+        { title: 'APPLICATIONS', link: 'getcertified.html#application' },
+        { title: 'PAYMENTS', link: 'getcertified.html#application' },
+      ];
+
+      // Search function for main search bar
+      searchInput.addEventListener('input', function () {
+        const query = searchInput.value.toLowerCase();
+        searchResults.innerHTML = '';
+
+        if (query) {
+          const results = data.filter(item => item.title.toLowerCase().includes(query));
+          if (results.length > 0) {
+            results.forEach(item => {
+              const resultItem = document.createElement('div');
+              resultItem.innerHTML = `<a href="${item.link}">${item.title}</a>`;
+              searchResults.appendChild(resultItem);
+            });
+            searchResults.style.display = 'block';
+          } else {
+            searchResults.innerHTML = '<div>No results found</div>';
+            searchResults.style.display = 'block';
+          }
+        } else {
+          searchResults.style.display = 'none';
+        }
+      });
+
+      // Search function for sidenav search bar
+      sidenavSearchInput.addEventListener('input', function () {
+        const query = sidenavSearchInput.value.toLowerCase();
+        sidenavSearchResults.innerHTML = '';
+
+        if (query) {
+          const results = data.filter(item => item.title.toLowerCase().includes(query));
+          if (results.length > 0) {
+            results.forEach(item => {
+              const resultItem = document.createElement('div');
+              resultItem.innerHTML = `<a href="${item.link}">${item.title}</a>`;
+              sidenavSearchResults.appendChild(resultItem);
+            });
+            sidenavSearchResults.style.display = 'block';
+          } else {
+            sidenavSearchResults.innerHTML = '<div>No results found</div>';
+            sidenavSearchResults.style.display = 'block';
+          }
+        } else {
+          sidenavSearchResults.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <section class="head">
+    <nav class="breadcrumbs">
+      <div class="breadcrumb-wrapper left">
+        <div class="breadcrumb-container">
+          <a href="index.html" class="breadcrumb">Home</a>
+          <a href="Abstract.html" class="breadcrumb">Abstract</a>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container  ">
+      <div class="section">
+        <div class="row ">
+          <div class="col s12 center">
+            <h3><i class="mdi-content-send white-text"></i></h3>
+            <h4 left class="white-text">LHB Abstract</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 left-align">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4><strong>Bismilla walhamdulila,</strong></h4>
+          <h5>The definition of what constitutes a Halaal is a divine, healthy diet for the soul and body.
+            to reflect the evolving understanding of the roles that different foods, essential nutrients,
+            and other food components play in health and disease. <strong>LHB (Local Halaal Board).</strong></h5>
+          <h5>Visitors, viewers, seekers of knowledge and every person in their/his/her capacity, fear
+            Allah; May Allah safeguard one and all from Satan. on behalf of the LHB, welcome with
+            a greeting of peace, mercy and blessing from our creator, who originated us from a
+            solitary essence, I Quote “Asalaaam aleikum warahmatullahi wabarakaatuh” End of
+            Quote. Transliterated as “harmony, compassion and consecration be upon you, your
+            nearest and dearest loved ones, neighbors and one and all, deceased or living”</h5>
+          <h5>LHB has/is still been repeatedly, persistently and consistently transforming a perception
+            in our neighborhood and localities that Halaal is for only some selected persons but
+            significantly a benefit and delightful to the soul and body of both male, female,
+            adolescent, toddler/infant, elderly, well-off, poverty-stricken, black, white, peach and
+            entirety.</h5>
+          <h5>The greater part of black people in some of our community, Halaal is well-defined and
+            familiarized with or as – Indian or Asian or foods that are mixed or prepared with hot
+            chilies or peri- peri spices, seasoning and flavors’. For instance; In south Africa, Islam is
+            familiarized with an Indian or cape Malay, that is looking at a historical background.
+            Salaam greetings can be un answered back if a black person pronounces it out to an
+            Indian person, there plentiful instances brethren’s and sisters have come into contact
+            with as new or converts to Islam or non-Muslims will speak regretting, shameful and
+            immoral behaviors amazingly being carried out by their Muslim Indian employers.</h5>
+          <h5>Beloved brothers and sisters; the setting up of the Local Halaal Board has/had a
+            purpose. not only to rectify the moral fiber and create in the peoples’ mind the factual of
+            history going forward.</h5>
+          <h5>This is not the only other mistaken belief about or that a Muslim or Islam goes thru while
+            carrying out their daily and cultural lives.</h5>
+          <h5>Halaal foods, drinks and services gets into a large and growing body of evidence
+            supporting it that; intake of certain types of nutrients, specific food groups, or
+            overarching dietary patterns positively influences health and promotes the prevention of
+            common non-communicable diseases (NCDs).</h5>
+          <h5>Greater consumption of Halaal compliant foods will stimulate health, and intake of non
+            Halaal foods, drinks, services, actions will kindle non healthier options for the soul and
+            body.</h5>
+          <h5>Peoples’ well-being, physical condition and healthiness are intrinsic to the eating habits
+            of certain heavenly recommended diets such as a Halaal compliant diet, Kosher diets or
+            foods that have a celestial construct as part of dietary patterns designed to cut down or
+            blockade disease risk; such as the Dietary Approaches to Stop Hypertension (DASH) or
+            Mediterranean-DASH Intervention for Neurodegenerative Delay (MIND) diets.</h5>
+          <h5>In comparison with a more traditional Western diet, these healthier alternatives are
+            found in Halaal compliant foods and also higher in plant-based foods, including fresh
+            fruits and vegetables, fish, whole grains, legumes, seeds, and nuts and lower or non-
+            existent in non Halaal foods in animal-based foods, particularly fatty and processed
+            meats. To better understand the current concept of a “Halaal compliant healthy diet,”
+            this appraisal describes the features and supporting divinely, clinical and epidemiologic
+            data for diets that have been shown to prevent disease and/or positively influence
+            health. In total, evidence from epidemiological studies and clinical trials indicates that
+            these types of dietary patterns reduce risks of NCDs including cardiovascular disease
+            and cancer, <strong>Insha Allah.</strong></h5>
+          <h6><strong>Reference:</strong></h6>
+          <h6>Asghari G., Yuzbashian E., Mirmiran P., Hooshmand F., Najafi R., Azizi F. Dietary
+            Approaches to Stop Hypertension (DASH) dietary pattern is associated with reduced
+            incidence of metabolic syndrome in children and adolescents. J. Pediatr. 2016;
+            174:178–184.e1. doi: 10.1016/j.jpeds.2016.03.077</h6>
+          <h6>Tamimi R.M., Spiegelman D., Smith-Warner S.A., Wang M., Pazaris M., Willett W.C., Eliassen
+            A.H., Hunter D.J. Population attributable risk of modifiable and nonmodifiable breast cancer risk
+            factors in postmenopausal breast cancer. Am. J. Epidemiol. 2016; 184:884–893. doi: 10.109</h6>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="row center">
+    <a class="center"><img src="premium_certified_quality_stamp.jpg" width="250" alt="" srcset=""></a>
+  </div> -->
+
+  <footer class="page-footer" id="contact-footer">
+    <div class="">
+      <div class="row">
+        <div class="col l4 s12">
+          <h5 class="white-text">Helpful Guides</h5>
+          <ul>
+            <li><a
+                href="https://www.muis.gov.sg/-/media/Files/Halal/HCC-2022-ver-1/infographics/Declaration-of-Ingredients-for-EE-FPA-Schemes_2022.ashx"
+                class="grey-text text-lighten-4"><i class="material-icons left green-text">check</i>Declaration of
+                Ingredients for EE FPA Schemes</a></li>
+          </ul>
+          <ul>
+            <li><a
+                href="https://www.muis.gov.sg/-/media/Files/Halal/HCC-2022-ver-1/infographics/Declaration-of-Ingredients-for-Pro-WP-SF-Schemes_2022.ashx"
+                class="grey-text text-lighten-4"><i class="material-icons left green-text">check</i>Declaration of
+                Ingredients for Pro WP SF Schemes</a></li>
+          </ul>
+          <ul>
+            <li><a
+                href="https://www.muis.gov.sg/-/media/Files/Halal/HCC-2022-ver-1/infographics/Explanation-Letter--Corrective-Action-Report2022.ashx"
+                class="grey-text text-lighten-4"><i class="material-icons left green-text">check</i>Explanation Letter
+                &amp; Corrective Action Report</a></li>
+          </ul>
+          <ul>
+            <li><a
+                href="https://www.muis.gov.sg/-/media/Files/Halal/HCC-2022-ver-1/infographics/RD-Request-Submission2022.ashx"
+                class="grey-text text-lighten-4"><i class="material-icons left green-text">check</i>R&amp;D Request
+                Submission</a></li>
+          </ul>
+          <ul>
+            <li><a
+                href="https://www.muis.gov.sg/-/media/Files/Halal/HCC-2022-ver-1/infographics/Sample-Halal-Team-Structure-for-EE-FPA-Schemes_2022.ashx"
+                class="grey-text text-lighten-4"><i class="material-icons left green-text">check</i>Sample Halaalan
+                Twayyiban Team Structure for EE FPA Schemes</a></li>
+          </ul>
+          <ul>
+            <li><a
+                href="https://www.muis.gov.sg/-/media/Files/Halal/HCC-2022-ver-1/infographics/Sample-Halal-Team-Structure-for-Pro-WP-SF-PA-Schemes_2022.ashx"
+                class="grey-text text-lighten-4"><i class="material-icons left green-text">check</i>Sample Halaalan
+                Twayyiban Team Structure for Pro WP SF PA Schemes</a></li>
+          </ul>
+          <ul>
+            <li><a
+                href="https://www.muis.gov.sg/-/media/Files/Halal/HCC-2022-ver-1/infographics/Tips-to-Develop-Principles-3-to-7-of-the-HalMQ-System_2022-R1.ashx"
+                class="grey-text text-lighten-4"><i class="material-icons left green-text">check</i>Tips to Develop
+                Principles 3 to 7 of the HalMQ System</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contact Info</h5>
+          <ul>
+            <li><a class="white-text"><i class="material-icons left green-text">location_on</i>Van Leenhof Street,
+                Christoburg, Centurion, 0183.</a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="tel:+27724468260" class="white-text"><i class="material-icons left green-text">call</i>072 446
+                8260</a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="mailto:info@localhalaalboard.org" class="white-text"><i
+                  class="material-icons left green-text">email</i>info@localhalaalboard.org</a></li>
+          </ul>
+          <ul>
+            <li><a class="white-text"><i class="material-icons left green-text">access_time</i>
+            <li>Sunday - Thursday: 7:00 - 16:00</li>
+            <li>Friday - Saturday: Closed</li> </a></li>
+          </ul>
+        </div>
+        <div class="col l5 s12">
+          <h5 class="white-text">Leave us a feedback</h5>
+          <!-- Contact Form -->
+          <section>
+            <div class="col s12 m20 l6">
+              <div id="contactModal" class="">
+                <div class="modal-content">
+                  <form method="post" action="your_script.php" id="contactModal">
+                    <label for="name" class="black-text"></label>
+                    <input type="text" name="name" id="name" placeholder="Name*" required>
+                    <!-- <br> -->
+                    <label for="email" class="black-text"></label>
+                    <input type="email" name="email" id="email" placeholder="Email*" required>
+                    <!-- <br> -->
+                    <label for="subject" class="black-text"></label>
+                    <input type="text" name="subject" id="subject" placeholder="Subject">
+                    <!-- <br> -->
+                    <label for="message" class="black-text"></label>
+                    <textarea name="message" id="message" placeholder="Write Your Message Here*" required cols="30"
+                      rows="5"></textarea>
+                    <!-- <br> -->
+                    <button class="" id="btn"><a class="white-text">Send</a></button>
+                  </form>
+
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <section>
+
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
+            <script>
+              var btn = document.getElementById('btn');
+              btn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var subject = document.getElementById('subject').value;
+                var message = document.getElementById('message').value;
+
+                // Check if any required fields are empty
+                if (!name || !email || !message) {
+                  alert("Please fill in all the required fields.");
+                  return; // Prevent sending the email if fields are missing
+                }
+
+                var body = 'name: ' + name + '<br/> email: ' + email + '<br/> subject: ' + subject + '<br/> message: ' + message;
+
+                Email.send({
+                  SecureToken: "dd2bf18f-09a5-46bb-961d-8dc768301175", //for messages.semtexagecny@outlook.com
+                  To: 'messages.semtexagency@outlook.com',
+                  From: "messages.semtexagency@outlook.com",
+                  Subject: "Urgent: A client is trying to get in touch - LHB home page",
+                  Body: body
+                }).then(
+                  function (message) {
+                    alert("Thank you, we will be in touch shortly!");
+
+                    // Clear form fields after successful submission
+                    setTimeout(function () {
+                      document.getElementById('name').value = '';
+                      document.getElementById('email').value = '';
+                      document.getElementById('subject').value = '';
+                      document.getElementById('message').value = '';
+                    }, 2000); // Delay clearing fields by 3000 milliseconds (3 seconds)
+                  }
+                ).catch(
+                  function (error) {
+                    console.log("Email sending error:", error);
+                  }
+                );
+              });
+            </script>
+
+            <!-- form ends here -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-copyright">
+      <div class="container">
+        Copyright © 2024 Local Halaal Board. All Rights Reserved. Designed by <a class="white-text text-indigo-darken-4"
+          href="https://www.semtexagency.co.za">Semtex Agency</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+
+</html>
